@@ -4,11 +4,14 @@ class User:
         self.name = name
         self.age = age
 
-    def print:
-        print("Name: "+ self.name + "; Age: "+ self.age)
+    def display_from_file(filename):
+        f = open(filename, 'r')
+        for line in f:
+            lines.append(line.strip('\n'))
+        return lines
 
-    def wat(dat):
-     if dat == 1:
-            print(dat)
-     else
-        print("No")
+    def execute(cmd):
+        try:
+            retcode = subprocess.call(cmd, shell=True)
+        except OSError as e:
+            print("Something went wrong")
