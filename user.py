@@ -6,3 +6,9 @@ class User:
 
     def print:
         print("Name: "+ self.name + "; Age: "+ self.age)
+
+    def wat(dat):
+     if dat == 1:
+            print(dat)
+     else
+        print("No")
