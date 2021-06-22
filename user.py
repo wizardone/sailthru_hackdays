@@ -16,3 +16,5 @@ class User:
         except OSError as e:
             print("Something went wrong")
 
+    def test():
+        print("I am a test")
