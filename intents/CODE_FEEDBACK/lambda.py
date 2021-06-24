@@ -17,23 +17,22 @@ def lambda_handler(event, context):
     
     code_review = sorted(unsorted_code_reviews, key=lambda c: c['CreatedTimeStamp'], reverse=True)[0]
     code_review_arn = code_review['CodeReviewArn']
-    
-    recommendations = client.list_recommendations(CodeReviewArn=code_review_arn)['RecommendationSummaries']
-    recommendations_text = ''
-    for recommendation in recommendations:
-        recommendations_text += recommendation['Description']
-        recommendations_text += '\n'
-    
-    response = {
+
+    #recommendations = client.list_recommendations(CodeReviewArn=code_review_arn)['RecommendationSummaries']
+    #recommendations_text = ''
+    #for recommendation in recommendations:
+    #    recommendations_text += recommendation['Description']
+    url = "https://console.aws.amazon.com/codeguru/reviewer/#/codereviews/details/"+code_review_arn
+    ok_response = {
         "dialogAction": {
             "type": "Close",
             "fulfillmentState": "Fulfilled",
             "message": {
                 "contentType": "PlainText",
-                "content": "Your recommendations are: \n"+ recommendations_text
+                "content": "Your recommendations can be found here: "+ url
             }
         }
     }
     
-    return response
+    return ok_response
 
